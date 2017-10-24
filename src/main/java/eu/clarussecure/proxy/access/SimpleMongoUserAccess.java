@@ -1,10 +1,7 @@
 package eu.clarussecure.proxy.access;
 
-import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import static com.mongodb.client.model.Filters.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.bson.Document;
 
 public class SimpleMongoUserAccess extends CLARUSUserOperations implements CLARUSAccess {
@@ -12,14 +9,7 @@ public class SimpleMongoUserAccess extends CLARUSUserOperations implements CLARU
     private int instancesNumber;
 
     private SimpleMongoUserAccess() {
-        // Correctly configure the log level
-        Logger mongoLogger = Logger.getLogger("org.mongodb.driver");
-        mongoLogger.setLevel(Level.SEVERE);
-        // Create a new client connecting to "localhost" on port 
-        this.mongoClient = new MongoClient("localhost", 27017);
-
-        // Get the database (will be created if not present)
-        this.db = mongoClient.getDatabase("CLARUS");
+        super();
 
         this.instancesNumber++;
     }
